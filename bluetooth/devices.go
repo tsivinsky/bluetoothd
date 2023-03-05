@@ -15,7 +15,7 @@ type BluetoothDevice struct {
 func GetConnectedDevices() ([]*BluetoothDevice, error) {
 	var devices []*BluetoothDevice
 
-	b, err := exec.Command("bluetoothctl", "devices").Output()
+	b, err := exec.Command("bluetoothctl", "devices", "Connected").Output()
 	if err != nil {
 		return nil, err
 	}
