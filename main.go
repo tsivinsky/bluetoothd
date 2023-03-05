@@ -22,12 +22,12 @@ func main() {
 	flag.IntVar(&interval, "i", 5, "Interval in minutes")
 	flag.Parse()
 
-	devices, err := bluetooth.GetConnectedDevices()
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	for {
+		devices, err := bluetooth.GetConnectedDevices()
+		if err != nil {
+			log.Fatal(err)
+		}
+
 		for _, device := range devices {
 			title := fmt.Sprintf("%s is low on power", device.Name)
 			text := fmt.Sprintf("%s has only %d%% of power", device.Name, device.Percentage)
